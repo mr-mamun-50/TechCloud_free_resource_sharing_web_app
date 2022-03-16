@@ -13,7 +13,7 @@
     <div class="w-auto  max-height-vh-100" id="sidenav-collapse-main">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link text-white <?php if ($view == 'dashboard') echo "active bg-gradient-primary" ?>" href="dashboard.php">
+                <a class="nav-link text-white <?php if ($view == 'dashboard') echo "active bg-gradient-info" ?>" href="dashboard.php">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">dashboard</i>
                     </div>
@@ -21,7 +21,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white <?php if ($view == 'software_category') echo "active bg-gradient-primary" ?>" href="software_category.php">
+                <a id="soft_cat" class="nav-link text-white <?php if ($view == 'software_category') echo "active bg-gradient-info" ?>" href="software_category.php">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">category</i>
                     </div>

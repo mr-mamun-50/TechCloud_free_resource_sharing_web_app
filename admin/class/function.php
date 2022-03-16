@@ -39,4 +39,33 @@ class TechCloud
         unset($_SESSION['admin_name']);
         header('location:index.php');
     }
+
+    public function add_soft_cat($data)
+    {
+        $cat_name = $data['cat_name'];
+        $cat_desc = $data['cat_desc'];
+
+        $query = "INSERT INTO software_category(cat_name, cat_desc) VALUE('$cat_name', '$cat_desc')";
+
+        if (mysqli_query($this->conn, $query)) {
+            return "New category added!!";
+        }
+    }
+    public function display_soft_cat()
+    {
+        $query = "SELECT * FROM software_category";
+
+        if (mysqli_query($this->conn, $query)) {
+            $soft_cat = mysqli_query($this->conn, $query);
+            return $soft_cat;
+        }
+    }
+    public function delete_soft_cat($id)
+    {
+        $query = "DELETE FROM software_category WHERE id=$id";
+
+        if (mysqli_query($this->conn, $query)) {
+            return "Category Deleted Seccessfully";
+        }
+    }
 }

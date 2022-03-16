@@ -1,6 +1,7 @@
 .input-border input,
 .input-border select {
     border: 1px solid lightgrey !important;
+    border-radius: 5px;
 }
 .input-border .page-item .page-link,
 .input-border .page-item span {
@@ -8,5 +9,19 @@
     width: auto;
     padding-left: 10px;
     padding-right: 10px;
+    background: none;
+    color: grey;
     /* margin: 3px; */
+}
+
+.input-group.input-group-outline.is-focused .form-label + .form-control,
+.input-group.input-group-outline.is-filled .form-label + .form-control {
+    border-color: #449ef0 !important;
+    border-top-color: transparent !important;
+    box-shadow: inset 1px 0 #449ef0, inset -1px 0 #449ef0, inset 0 -1px #449ef0;
+}
+
+.form-group input,
+.form-group textarea {
+    border: 1px solid lightgrey !important;
 }
