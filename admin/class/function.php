@@ -68,4 +68,16 @@ class TechCloud
             return "Category Deleted Seccessfully";
         }
     }
+    public function edit_soft_cat($data)
+    {
+        $id = $data['id'];
+        $cat_name = $data['cat_name'];
+        $cat_desc = $data['cat_desc'];
+
+        $query = "UPDATE software_category SET cat_name= '$cat_name', cat_desc = '$cat_desc' WHERE id = '$id'";
+
+        if (mysqli_query($this->conn, $query)) {
+            return "TrxID updated successfully!";
+        }
+    }
 }

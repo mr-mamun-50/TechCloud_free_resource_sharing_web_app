@@ -5,8 +5,8 @@
     <div class="card shadow-lg">
         <div class="card-header pb-0 pt-3">
             <div class="float-start">
-                <h5 class="mt-3 mb-0">Material UI Configurator</h5>
-                <p>See our dashboard options.</p>
+                <h5 class="mt-3 mb-0">TechCloud</h5>
+                <p>Free tech resource platform</p>
             </div>
             <div class="float-end mt-4">
                 <button class="btn btn-link text-dark p-0 fixed-plugin-close-button">
@@ -57,7 +57,7 @@
                 </div>
             </div>
             <hr class="horizontal dark my-sm-4">
-            <a class="btn btn-outline-dark w-100" href="">View documentation</a>
+            <!-- <a class="btn btn-outline-dark w-100" href="">View documentation</a>
             <div class="w-100 text-center">
                 <a class="github-button" href="https://github.com/creativetimofficial/material-dashboard" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star creativetimofficial/material-dashboard on GitHub">Star</a>
                 <h6 class="mt-3">Thank you for sharing!</h6>
@@ -67,7 +67,7 @@
                 <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.creative-tim.com/product/material-dashboard" class="btn btn-dark mb-0 me-2" target="_blank">
                     <i class="fab fa-facebook-square me-1" aria-hidden="true"></i> Share
                 </a>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>

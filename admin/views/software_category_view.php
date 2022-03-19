@@ -12,6 +12,9 @@ if (isset($_GET['status'])) {
         $dltMsg = $obj->delete_soft_cat($catID);
     }
 }
+if (isset($_POST['edit_soft_cat'])) {
+    $obj->edit_soft_cat($_POST);
+}
 
 ?>
 
@@ -22,7 +25,7 @@ if (isset($_GET['status'])) {
                 <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                     <div class="bg-gradient-info shadow-info border-radius-lg py-3 d-flex justify-content-between">
                         <h6 class="text-white text-capitalize ps-3 mt-2">Software Category</h6>
-                        <button class="btn btn-white my-0 mr-3" data-toggle="modal" data-target="#staticBackdrop"><i class="fas fa-plus text-info"></i> Add Category</button>
+                        <button class="btn btn-white my-0 mr-3" data-toggle="modal" data-target="#add_cat_staticBackdrop"><i class="fas fa-plus text-info"></i> Add Category</button>
                     </div>
                 </div>
 
@@ -62,9 +65,66 @@ if (isset($_GET['status'])) {
                                         <td><?php echo $category['id'] ?></td>
                                         <td><?php echo $category['cat_name'] ?></td>
                                         <td><?php echo $category['cat_desc'] ?></td>
-                                        <td class="btn-group">
-                                            <a href="#" class="btn bg-gradient-info my-0 px-3"><i class="fas fa-edit"></i></a>
-                                            <a href="?status=delete&&id=<?php echo $category['id'] ?>" class="btn bg-gradient-danger my-0 px-3" onclick="return confirm('Do you really want to delete this software category?')"><i class="fas fa-trash"></i></a>
+                                        <td>
+                                            <div class="btn-group">
+                                                <a href="" class="btn bg-gradient-info my-0 px-3" data-toggle="modal" data-target="<?php echo "#alert_" . $category['id'] ?>"><i class="fas fa-edit"></i></a>
+                                                <!-- <a href="?status=delete&&id=<?php echo $category['id'] ?>" class="btn bg-gradient-danger my-0 px-3" onclick="return confirm('Do you really want to delete this software category?')"><i class="fas fa-trash"></i></a> -->
+                                                <a class="btn bg-gradient-danger my-0 px-3" href="" data-toggle="modal" data-target="<?php echo "#dltAlert_" . $category['id'] ?>"><i class="fas fa-trash-alt"></i> </a>
+                                            </div>
+
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="<?php echo "alert_" . $category['id'] ?>" tabindex="-1" aria-labelledby="<?php echo "alert_" . $category['id'] . "Label"; ?>" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content px-2">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="<?php echo "alert_" . $category['id'] . "Label"; ?>">Edit Software Category</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form action="" method="POST">
+                                                                <input type="hidden" name="id" value="<?php echo $category['id'] ?>">
+                                                                <div class="form-group">
+                                                                    <label class="" for="secCode">Category name</label>
+                                                                    <input class="form-control p-2" name="cat_name" type="text" value="<?php echo $category['cat_name'] ?>">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label class="" for="secCode">Category description</label>
+                                                                    <textarea name="cat_desc" class="p-2 form-control" id="" cols="" rows="7"><?php echo $category['cat_desc'] ?></textarea>
+                                                                </div>
+                                                                <div class="text-right">
+                                                                    <button type="button" class="btn" data-dismiss="modal">Calcel</button>
+                                                                    <button name="edit_soft_cat" class="btn bg-gradient-info" type="submit">Save changes</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="<?php echo "dltAlert_" . $category['id'] ?>" tabindex="-1" aria-labelledby="<?php echo "#dltAlert_" . $category['id'] . "Label" ?>" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content px-2">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="<?php echo "#dltAlert" . $category['id'] . "Label" ?>">Delete category</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <p><b>Do you really want to delete this software category?</b><br>
+                                                                It's not recoberable.
+                                                            </p>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn" data-dismiss="modal">No</button>
+                                                            <a class="btn bg-gradient-danger" href="?status=delete&&id=<?php echo $category['id'] ?>">Yes</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </td>
 
                                     </tr>
@@ -76,11 +136,11 @@ if (isset($_GET['status'])) {
                 </div>
 
                 <!-- Modal -->
-                <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal fade" id="add_cat_staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="add_cat_staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog">
-                        <div class="modal-content">
+                        <div class="modal-content px-2">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="staticBackdropLabel">Add software category</h5>
+                                <h5 class="modal-title" id="add_cat_staticBackdropLabel">Add software category</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -97,7 +157,7 @@ if (isset($_GET['status'])) {
                                     </div>
 
                                     <div class="text-right">
-                                        <button type="button" class="btn" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn" data-dismiss="modal">Cancel</button>
                                         <button name="add_soft_cat" type="" class="btn btn-success"><i class="fas fa-plus"></i> Add</button>
                                     </div>
 
@@ -112,19 +172,4 @@ if (isset($_GET['status'])) {
         </div>
     </div>
 
-</div>
-
-
-<div class="position-fixed bottom-1 end-1 z-index-2">
-    <div class="toast fade hide p-2 bg-white" role="alert" aria-live="assertive" id="successToast" aria-atomic="true">
-        <div class="toast-header border-0">
-            <i class="material-icons text-success me-2">check</i>
-            <span class="me-auto font-weight-bold">Successful</span>
-            <i class="fas fa-times text-md ms-3 cursor-pointer" data-bs-dismiss="toast" aria-label="Close"></i>
-        </div>
-        <hr class="horizontal dark m-0">
-        <div class="toast-body">
-            <?php echo $return_msg; ?>
-        </div>
-    </div>
 </div>

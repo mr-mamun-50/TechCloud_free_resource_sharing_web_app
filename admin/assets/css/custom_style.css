@@ -25,3 +25,9 @@
 .form-group textarea {
     border: 1px solid lightgrey !important;
 }
+
+#dataTable th,
+#dataTable td {
+    border: 0.1px solid #f0f0f0 !important;
+    border-collapse: collapse !important;
+}
