@@ -94,7 +94,7 @@ if (isset($_POST['edit_soft_cat'])) {
                                                                     <textarea name="cat_desc" class="p-2 form-control" id="" cols="" rows="7"><?php echo $category['cat_desc'] ?></textarea>
                                                                 </div>
                                                                 <div class="text-right">
-                                                                    <button type="button" class="btn" data-dismiss="modal">Calcel</button>
+                                                                    <button type="button" class="btn" data-dismiss="modal">Cancel</button>
                                                                     <button name="edit_soft_cat" class="btn bg-gradient-info" type="submit">Save changes</button>
                                                                 </div>
                                                             </form>
